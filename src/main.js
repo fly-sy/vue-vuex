@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  // 5. 挂载在 Vue 实例上
   store,
   components: { App },
   template: '<App/>'

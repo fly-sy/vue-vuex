@@ -1,75 +1,33 @@
 import Vue from 'vue'
 
+// 1. 引入vuex
 import Vuex, { Store } from 'vuex'
 
+// 2. 注册   
+
 Vue.use(Vuex)
-// 购物
-const countModule = {
-  state: {
-    count: 2,
-    sub: 1
-  },
-  mutations: {
-    add(state) {
-      state.count++
-    },
-    sub(state) {
-      state.count--
-    }
-  },
-  getters: {
-    count(state) {
-      state.count
-    },
-    sub(state) {
-      state.count
-    }
-  },
-  actions: {
-    add(context) {
-      context.commit('add')
-    }
-  }
 
-}
-
-// 列表 
-
-const countModule2 = {
-  state: {
-    count: 2,
-    sub: 1
-  },
-  mutations: {
-    add(state) {
-      state.count++
-    },
-    sub(state) {
-      state.count--
-    }
-  },
-  getters: {
-    count(state) {
-      state.count
-    },
-    sub(state) {
-      state.count
-    }
-  },
-  actions: {
-    add(context) {
-      context.commit('add')
-    }
-  }
-
-}
-
+// 3. 实例化
 export default new Store({
-  // 如果state数据发生变化不要自己去改变 使用mutations 里面的函数辅助调用，如果只是获取的话直接获取就行
-  // $store.state.count   
-  // $store.state.count++   这种方式不建议  使用  $store.state.commit() 辅助
-  modules: {
-    countModule,
-    countModule2
+  // 4.0 定义核心对象
+  // state 类似于data  data 是私有的  state是全局
+  state: {
+    count: 0,
+    msg: 'msg'
+  },
+  // 类似于methods methods 是私有的 mutations 是全局
+  mutations: {
+    add(state){
+      state.count++ 
+    }
+  },
+  // 类似于 computed 和 filters 的结合
+  getters: {
+    count(state){
+      return state.count + '~~~~~'
+    },
+    msg(state){
+      return state.msg 
+    }
   }
 })
